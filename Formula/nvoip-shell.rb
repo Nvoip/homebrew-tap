@@ -1,8 +1,8 @@
 class NvoipShell < Formula
   desc "Shell scripts for integrating with the Nvoip API v2"
   homepage "https://www.nvoip.com.br/"
-  url "https://github.com/Nvoip/nvoip-shell/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "2a100a3f5754f5d9cefdcdb709f136e56d33889a9cfa51b9e0fe9f015f1c1dc9"
+  url "https://github.com/Nvoip/nvoip-shell/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "1fe4829111891f72f7e607a7f820b41e9ad89ef089dca4523a9b210bf8a2fcae"
   license "GPL-3.0-only"
 
   depends_on "curl"
