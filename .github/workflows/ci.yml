@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  homebrew:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ruby -c Formula/nvoip-shell.rb
+      - run: brew audit --strict --online Formula/nvoip-shell.rb
