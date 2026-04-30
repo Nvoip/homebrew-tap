@@ -13,4 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: ruby -c Formula/nvoip-shell.rb
-      - run: brew audit --strict --online Formula/nvoip-shell.rb
+      - run: brew tap nvoip/tap "$GITHUB_WORKSPACE"
+      - run: brew audit --strict --online nvoip/tap/nvoip-shell
