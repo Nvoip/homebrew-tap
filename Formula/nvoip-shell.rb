@@ -13,14 +13,17 @@ class NvoipShell < Formula
     libexec.install "lib"
     libexec.install "examples"
     libexec.install "Scripts"
-    bin.install_symlink libexec/"examples/create-access-token.sh" => "nvoip-create-access-token"
-    bin.install_symlink libexec/"examples/get-balance.sh" => "nvoip-get-balance"
-    bin.install_symlink libexec/"examples/send-sms.sh" => "nvoip-send-sms"
-    bin.install_symlink libexec/"examples/create-call.sh" => "nvoip-create-call"
-    bin.install_symlink libexec/"examples/send-otp.sh" => "nvoip-send-otp"
-    bin.install_symlink libexec/"examples/check-otp.sh" => "nvoip-check-otp"
-    bin.install_symlink libexec/"examples/list-whatsapp-templates.sh" => "nvoip-list-whatsapp-templates"
-    bin.install_symlink libexec/"examples/send-whatsapp-template.sh" => "nvoip-send-whatsapp-template"
+    %w[
+      create-access-token get-balance send-sms create-call send-otp check-otp
+      list-whatsapp-templates send-whatsapp-template
+    ].each do |name|
+      command = bin/"nvoip-#{name}"
+      command.write <<~SH
+        #!/bin/sh
+        exec /bin/sh "#{libexec}/examples/#{name}.sh" "$@"
+      SH
+      command.chmod 0755
+    end
   end
 
   test do
