@@ -15,3 +15,5 @@ jobs:
       - run: ruby -c Formula/nvoip-shell.rb
       - run: brew tap nvoip/tap "$GITHUB_WORKSPACE"
       - run: brew audit --strict --online nvoip/tap/nvoip-shell
+      - run: brew install --build-from-source nvoip/tap/nvoip-shell
+      - run: brew test nvoip/tap/nvoip-shell
