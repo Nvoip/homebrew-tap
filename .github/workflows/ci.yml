@@ -7,11 +7,16 @@ on:
       - main
       - master
 
+permissions:
+  contents: read
+
 jobs:
   homebrew:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - run: ruby -c Formula/nvoip-shell.rb
       - run: brew tap nvoip/tap "$GITHUB_WORKSPACE"
       - run: brew audit --strict --online nvoip/tap/nvoip-shell
